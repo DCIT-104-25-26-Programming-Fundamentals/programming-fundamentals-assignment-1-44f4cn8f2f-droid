@@ -53,5 +53,51 @@
 #
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-# =============================================================================
+ =============================================================================
+def multiplication_table(number: int) -> None:
+	"""Print multiplication table for number from 1 to 12."""
+	print(f"Multiplication Table for {number}:")
+	for i in range(1, 13):
+		print(f"{number}  x  {i}  =  {number * i}")
 
+
+def part_a() -> None:
+	"""Part A: Ask user for a single number and print its table."""
+	try:
+		n = int(input("Enter a number: ").strip())
+	except Exception:
+		print("Invalid input. Expected an integer.")
+		return
+	multiplication_table(n)
+
+
+def part_b() -> None:
+	"""Part B: Ask user for N and print tables from 1 to N with separators."""
+	try:
+		n = int(input("Enter N (positive integer): ").strip())
+	except Exception:
+		print("Invalid input. Expected an integer.")
+		return
+	if n <= 0:
+		print("Invalid input. N must be a positive integer.")
+		return
+	for num in range(1, n + 1):
+		multiplication_table(num)
+		if num != n:
+			print('-' * 27)
+
+
+def main() -> None:
+	"""Simple menu to run parts A and B."""
+	print("Choose option:\n1) Single table\n2) Tables from 1 to N")
+	choice = input("Enter 1 or 2: ").strip()
+	if choice == '1':
+		part_a()
+	elif choice == '2':
+		part_b()
+	else:
+		print("Invalid choice.")
+
+
+if __name__ == '__main__':
+	main()
